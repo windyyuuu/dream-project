@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="淡江大學財金系蕭雯萱的青年百億海外圓夢計畫申請網站。結合教育科技與財務金融，致力於永續治理與社會創新。">
+    <title>蕭雯萱 | 青年百億海外圓夢計畫</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#e8d2c3', 
+                            300: '#d4bba0',
+                            400: '#c6a37f', 
+                            500: '#b88b5e',
+                            600: '#a37445', 
+                            700: '#8c5a2b',
+                            800: '#754b24', 
+                            900: '#5c3a1a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fdf8f6; }
+        ::-webkit-scrollbar-thumb { background: #d4bba0; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b88b5e; }
+        
+        /* Loading text animation */
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+    </style>
+</head>
+<body class="bg-brand-50 text-stone-800 font-sans antialiased selection:bg-brand-300 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 font-bold text-xl text-brand-700 tracking-wider">
+                    WEN-HSUAN HSIAO
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-stone-600 hover:text-brand-500 transition px-3 py-2 text-sm font-medium">首頁</a>
+                    <a href="#about" class="text-stone-600 hover:text-brand-500 transition px-3 py-2 text-sm font-medium">關於我</a>
+                    <a href="#academic" class="text-stone-600 hover:text-brand-500 transition px-3 py-2 text-sm font-medium">學術與研究</a>
+                    <a href="#experience" class="text-stone-600 hover:text-brand-500 transition px-3 py-2 text-sm font-medium">實踐經歷</a>
+                    <a href="#project" class="text-brand-700 font-bold hover:text-brand-900 transition px-3 py-2 text-sm">圓夢計畫</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" aria-label="開啟行動版選單" class="text-stone-600 hover:text-brand-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-brand-100 shadow-lg absolute w-full left-0">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-stone-700 hover:bg-brand-50 hover:text-brand-700 transition">首頁</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-stone-700 hover:bg-brand-50 hover:text-brand-700 transition">關於我</a>
+                <a href="#academic" class="block px-3 py-2 text-base font-medium text-stone-700 hover:bg-brand-50 hover:text-brand-700 transition">學術與研究</a>
+                <a href="#experience" class="block px-3 py-2 text-base font-medium text-stone-700 hover:bg-brand-50 hover:text-brand-700 transition">實踐經歷</a>
+                <a href="#project" class="block px-3 py-2 text-base font-bold text-brand-700 hover:bg-brand-50 transition">圓夢計畫</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30">
+            <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-brand-300 blur-3xl"></div>
+            <div class="absolute top-40 -left-20 w-72 h-72 rounded-full bg-orange-200 blur-3xl"></div>
+        </div>
+        <div class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
+            <div class="w-full md:w-1/2 flex flex-col justify-center fade-in-up text-center md:text-left">
+                <!-- 已放大：青年百億海外圓夢計畫標籤 -->
+                <span class="text-brand-500 font-black tracking-widest text-2xl md:text-3xl mb-8 block">青年百億海外圓夢計畫</span>
+                
+                <h1 class="text-6xl md:text-7xl font-black text-stone-800 leading-tight mb-6">
+                    蕭雯萱
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-stone-600 font-medium mb-8 leading-relaxed">
+                    從教育科技到財務金融，<br class="hidden md:block">
+                    用數據與治理思維解決永續難題。
+                </h2>
+                <p class="text-lg md:text-xl text-stone-500 mb-10 max-w-xl mx-auto md:mx-0">
+                    I-1-31 永續領航：澳洲治理蹲點<br>
+                    淡江大學 財務金融學系
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center md:justify-start">
+                    <a href="#project" class="bg-brand-700 text-white px-10 py-4 text-lg rounded-full font-bold hover:bg-brand-900 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center">
+                        查看圓夢計畫 <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#about" class="bg-white text-brand-700 border-2 border-brand-300 px-10 py-4 text-lg rounded-full font-bold hover:bg-brand-50 transition shadow text-center">
+                        了解我的故事
+                    </a>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center fade-in-up" style="transition-delay: 0.2s;">
+                <div class="relative w-72 h-72 md:w-96 md:h-96 group">
+                    <div class="absolute inset-0 bg-brand-300 rounded-full transform translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition duration-500"></div>
+                    <img src="profile.png.JPG" alt="蕭雯萱 專業形象照" onerror="this.src='https://ui-avatars.com/api/?name=Wen+Hsuan&background=d4bba0&color=fff&size=512'" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white shadow-xl transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white px-4">
+        <div class="max-w-6xl mx-auto fade-in-up">
+            <div class="text-center mb-16">
+                <!-- 標題放大 -->
+                <h2 class="text-4xl md:text-5xl font-black text-brand-900 mb-6">關於我</h2>
+                <div class="w-24 h-1.5 bg-brand-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                <!-- Info Card (左側) -->
+                <div class="lg:col-span-4 bg-brand-50 rounded-3xl p-10 shadow-sm border border-brand-100 relative overflow-hidden flex flex-col h-full">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-brand-900 text-7xl">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    
+                    <!-- Basic Info -->
+                    <div class="relative z-10 mb-6">
+                        <h4 class="text-2xl font-bold text-brand-700 mb-6 flex items-center">
+                            <i class="fas fa-address-card mr-3"></i>基本資料
+                        </h4>
+                        <ul class="space-y-6 text-lg md:text-xl">
+                            <li class="flex items-center"><i class="fas fa-user text-brand-500 w-10 text-xl"></i> <strong class="mr-2">姓名：</strong> 蕭雯萱</li>
+                            <li class="flex items-center"><i class="fas fa-university text-brand-500 w-10 text-xl"></i> <strong class="mr-2">學校：</strong> 淡江大學</li>
+                            <li class="flex items-center"><i class="fas fa-graduation-cap text-brand-500 w-10 text-xl"></i> <strong class="mr-2">科系：</strong> 財務金融學系</li>
+                            <li class="flex items-center"><i class="fas fa-brain text-brand-500 w-10 text-xl"></i> <strong class="mr-2">MBTI：</strong> ISFJ</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skills & Languages -->
+                    <div class="relative z-10 flex-1 flex flex-col justify-center py-6">
+                        <!-- Language Card -->
+                        <div class="mb-12">
+                            <h4 class="text-2xl font-bold text-brand-700 mb-5 flex items-center">
+                                <i class="fas fa-language mr-3"></i>外語能力證明
+                            </h4>
+                            <a href="https://certs.duolingo.com/ekk4q278bnpqv08q/" target="_blank" class="block bg-white p-6 rounded-2xl border border-brand-100 flex items-center justify-between shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xl mr-4 shadow-inner">D</div>
+                                    <span class="text-stone-700 text-lg font-bold tracking-wide">Duolingo</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-brand-900 font-black text-3xl leading-none">90</div>
+                                    <div class="text-stone-400 text-sm font-bold mt-1 tracking-wider">CEFR B1</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Core Skills Progress Bars -->
+                        <div>
+                            <h4 class="text-2xl font-bold text-brand-700 mb-5 flex items-center">
+                                <i class="fas fa-tools mr-3"></i>跨域核心技能
+                            </h4>
+                            <div class="bg-white p-8 rounded-2xl border border-brand-100 shadow-sm">
+                                <div class="space-y-8">
+                                    <div>
+                                        <div class="flex justify-between text-lg md:text-xl mb-4 text-stone-700 font-bold tracking-wide">
+                                            <span>永續政策分析與對標</span>
+                                        </div>
+                                        <div class="w-full bg-brand-100 rounded-full h-4">
+                                            <div class="bg-brand-700 h-4 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-lg md:text-xl mb-4 text-stone-700 font-bold tracking-wide">
+                                            <span>數位轉譯與視覺倡議</span>
+                                        </div>
+                                        <div class="w-full bg-brand-100 rounded-full h-4">
+                                            <div class="bg-brand-500 h-4 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-lg md:text-xl mb-4 text-stone-700 font-bold tracking-wide">
+                                            <span>財務計量與事件研究</span>
+                                        </div>
+                                        <div class="w-full bg-brand-100 rounded-full h-4">
+                                            <div class="bg-brand-300 h-4 rounded-full" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="mt-6 pt-8 border-t border-brand-200 relative z-10">
+                        <div class="flex flex-wrap gap-4">
+                            <span class="px-6 py-3 bg-white text-brand-700 rounded-2xl text-lg md:text-xl shadow-sm font-bold border border-brand-100">#跨領域實踐者</span>
+                            <span class="px-6 py-3 bg-white text-brand-700 rounded-2xl text-lg md:text-xl shadow-sm font-bold border border-brand-100">#永續治理</span>
+                            <span class="px-6 py-3 bg-white text-brand-700 rounded-2xl text-lg md:text-xl shadow-sm font-bold border border-brand-100">#韌性成長</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story Text (右側) -->
+                <div class="lg:col-span-8 space-y-10 text-stone-600 leading-relaxed text-xl flex flex-col justify-center text-left">
+                    <div class="fade-in-up" style="transition-delay: 0.1s;">
+                        <h3 class="text-3xl font-bold text-brand-700 mb-4 flex items-center">
+                            <i class="fas fa-seedling mr-4 text-brand-500"></i>逆境中的資源爭取與公共意識啟蒙
+                        </h3>
+                        <p>我成長於低收入戶家庭，自小便在資源有限的環境中成長，因此對於學習有更大的渴望。相較於許多同齡者，我能依靠的外在資源並不多，因此持續主動爭取機會，包含研究計畫、實習與社團參與等，希望能在有限條件下努力為自己創造更多累積的空間。</p>
+                    </div>
+                    
+                    <div class="fade-in-up" style="transition-delay: 0.2s;">
+                        <h3 class="text-3xl font-bold text-brand-700 mb-4 flex items-center">
+                            <i class="fas fa-exchange-alt mr-4 text-brand-500"></i>跨域學習與學業表現：從教育科技到財務金融
+                        </h3>
+                        <p>大一就讀教育科技系，接觸學習科技與媒體應用；大二轉入財金系，修讀財務管理與投資等核心課程。這段跨域歷程讓我在面對公共治理與永續議題時，不僅關注「制度設計」，更會思考政策「如何被溝通與實際採納」。同時，我長期維持 90 分以上、GPA 4.0 的優異成績，展現高度自律，證明我已具備承接高強度學習任務的準備，能完美勝任本計畫的行前培訓、國外課程與成果發表。</p>
+                    </div>
+
+                    <div class="fade-in-up" style="transition-delay: 0.3s;">
+                        <h3 class="text-3xl font-bold text-brand-700 mb-4 flex items-center">
+                            <i class="fas fa-bolt mr-4 text-brand-500"></i>永續視角的震撼教育
+                        </h3>
+                        <p>大二的「環境變遷」課程徹底打破了我對永續的直覺想像。課堂討論讓我意識到：電動車真的環保嗎？減碳行為應該是義務，透過獎勵來鼓勵真的合適嗎？這些衝擊讓我明白，永續不是單一面向的口號，而是牽涉複雜利弊與治理架構的綜合題。這也成為我後來主動申請「國科會碳費實證研究」的核心動力。</p>
+                    </div>
+
+                    <div class="fade-in-up" style="transition-delay: 0.4s;">
+                        <h3 class="text-3xl font-bold text-brand-700 mb-4 flex items-center">
+                            <i class="fas fa-globe-asia mr-4 text-brand-500"></i>為什麼渴望「百億海外圓夢」？
+                        </h3>
+                        <p>去年第一次認識這個計畫時，我就將它視為必須挑戰的目標。在台灣，我已經透過研究和新創實踐嘗試尋找永續解方；現在，我渴望跳脫單一國家的視角，親自走進已達成碳中和的澳洲西雪梨大學，觀察他們如何從「宣示永續」走向「實際達標」，並將這些寶貴的治理與制度經驗帶回台灣。</p>
+                    </div>
+
+                    <blockquote class="border-l-4 border-brand-500 pl-8 py-6 mt-10 text-xl italic bg-brand-50 rounded-r-lg text-brand-900 font-medium fade-in-up shadow-sm">
+                        "無論是課堂上的震盪，或是在大專生研究中的探索，都讓我確信自己希望長期投入的主軸，就是「以治理與制度為切入點的永續」。"
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic & Research -->
+    <section id="academic" class="py-20 bg-brand-50 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-black text-brand-900 mb-4">學術表現與研究</h2>
+                <div class="w-20 h-1 bg-brand-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-3xl p-8 shadow-md fade-in-up border-t-4 border-brand-500">
+                    <h3 class="text-2xl font-bold text-stone-800 mb-6 flex items-center text-left">
+                        <i class="fas fa-chart-line text-brand-500 mr-3"></i>在校成績表現
+                    </h3>
+                    <p class="text-stone-600 mb-8 text-lg md:text-xl leading-relaxed text-left">長期維持穩定且高標準的學習表現，具備承接高強度學習任務的準備，能有效吸收並整合所學。</p>
+                    <div class="flex flex-col gap-4">
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-brand-50 py-5 px-3 rounded-2xl border border-brand-100 shadow-sm">
+                                <div class="text-3xl md:text-4xl font-black text-brand-700 mb-2">4.0/4.0</div>
+                                <div class="text-sm font-bold text-stone-500">滿分 GPA</div>
+                            </div>
+                            <div class="bg-brand-50 py-5 px-3 rounded-2xl border border-brand-100 shadow-sm">
+                                <div class="text-3xl md:text-4xl font-black text-brand-700 mb-2">95.37</div>
+                                <div class="text-sm font-bold text-stone-500">學業總平均</div>
+                            </div>
+                        </div>
+                        <div class="bg-brand-50 py-4 px-6 rounded-2xl border border-brand-100 shadow-sm flex items-center justify-center gap-6">
+                            <div class="text-3xl md:text-4xl font-black text-brand-700">1.56%</div>
+                            <div class="text-base font-bold text-stone-500">系百分比排名</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-md fade-in-up border-t-4 border-brand-500">
+                    <h3 class="text-2xl font-bold text-stone-800 mb-6 flex items-center text-left">
+                        <i class="fas fa-certificate text-brand-500 mr-3"></i>專業金融證照
+                    </h3>
+                    <ul class="space-y-5 text-left">
+                        <li class="flex items-center bg-brand-50 p-4 md:p-5 rounded-2xl shadow-sm border border-brand-100">
+                            <i class="fas fa-check-circle text-brand-500 mr-4 text-xl md:text-2xl"></i>
+                            <span class="text-stone-700 font-bold text-lg md:text-xl tracking-wide">衍生性金融商品銷售人員資格測驗</span>
+                        </li>
+                        <li class="flex items-center bg-brand-50 p-4 md:p-5 rounded-2xl shadow-sm border border-brand-100">
+                            <i class="fas fa-check-circle text-brand-500 mr-4 text-xl md:text-2xl"></i>
+                            <span class="text-stone-700 font-bold text-lg md:text-xl tracking-wide">金融市場常識與職業道德</span>
+                        </li>
+                        <li class="flex items-center bg-brand-50 p-4 md:p-5 rounded-2xl shadow-sm border border-brand-100">
+                            <i class="fas fa-check-circle text-brand-500 mr-4 text-xl md:text-2xl"></i>
+                            <span class="text-stone-700 font-bold text-lg md:text-xl tracking-wide">銀行內部控制與內部稽核測驗 (消費金融)</span>
+                        </li>
+                        <li class="flex items-center bg-brand-50 p-4 md:p-5 rounded-2xl shadow-sm border border-brand-100">
+                            <i class="fas fa-check-circle text-brand-500 mr-4 text-xl md:text-2xl"></i>
+                            <span class="text-stone-700 font-bold text-lg md:text-xl tracking-wide">信託業業務人員信託業務專業測驗</span>
+                        </li>
+                        <li class="flex items-center bg-brand-50 p-4 md:p-5 rounded-2xl shadow-sm border border-brand-100">
+                            <i class="fas fa-check-circle text-brand-500 mr-4 text-xl md:text-2xl"></i>
+                            <span class="text-stone-700 font-bold text-lg md:text-xl tracking-wide">初階外匯人員專業能力測驗</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 研究計畫區塊 -->
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-md fade-in-up relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-5">
+                    <i class="fas fa-globe-asia text-9xl text-brand-900"></i>
+                </div>
+                <div class="relative z-10 text-left">
+                    <span class="inline-block px-5 py-2 bg-brand-100 text-brand-800 rounded-full text-base font-bold mb-5">國科會大專生研究計畫</span>
+                    <h3 class="text-3xl md:text-4xl font-bold text-stone-800 mb-8 leading-tight">
+                        ESG 績效是否能抵禦政策衝擊？<br class="hidden md:block">
+                        <span class="text-brand-700">以臺灣碳費徵收為例</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 text-stone-600 mb-8">
+                        <div>
+                            <h4 class="font-bold text-brand-900 mb-4 flex items-center text-2xl md:text-3xl">
+                                <i class="fas fa-bullseye text-brand-500 mr-3"></i>探索永續的「類保險效果」
+                            </h4>
+                            <p class="text-xl md:text-2xl mb-4 leading-relaxed">我致力於從數據中證實良好的 ESG 績效在面對政策衝擊時具備一定的「保護效果」。我的目標是讓企業看見：投入永續不僅是合規成本，更是提升韌性的長期策略。</p>
+                            
+                            <div class="mt-8 flex justify-start">
+                                <a href="research_proposal.pdf" download="蕭雯萱_大專生研究計畫書.pdf" class="inline-flex items-center justify-center bg-white border-[3px] border-brand-300 text-brand-700 px-12 py-5 rounded-full font-bold text-xl md:text-2xl hover:bg-brand-50 transition shadow-md hover:shadow-lg group transform hover:-translate-y-1">
+                                    下載大專生研究計畫書 <i class="fas fa-file-pdf ml-4 text-2xl md:text-3xl group-hover:text-brand-500"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-900 mb-4 flex items-center text-2xl md:text-3xl">
+                                <i class="fas fa-flag-checkered text-brand-500 mr-3"></i>核心問題與方法
+                            </h4>
+                            <p class="text-xl md:text-2xl mb-4 leading-relaxed">
+                                本研究採用<strong>事件研究法</strong>，以 2024/10/07 碳費費率審議為事件日，結合 TIP 臺灣永續評鑑與環境部碳排數據，探討三大核心問題：
+                            </p>
+                            <ul class="list-none space-y-5 text-xl md:text-2xl">
+                                <li class="flex items-start">
+                                    <i class="fas fa-angle-right text-brand-500 mt-1 md:mt-1.5 mr-3 font-bold shrink-0"></i>
+                                    <span>碳費費率確立，是否對上市櫃公司股價造成顯著負面衝擊？</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-angle-right text-brand-500 mt-1 md:mt-1.5 mr-3 font-bold shrink-0"></i>
+                                    <span>高 ESG 評分企業，是否能發揮保護效果減緩股價下跌？</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-angle-right text-brand-500 mt-1 md:mt-1.5 mr-3 font-bold shrink-0"></i>
+                                    <span>此緩衝效果是否會因產業的碳排放強度而有顯著差異？</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-black text-brand-900 mb-6">社會創新與實踐經歷</h2>
+                <div class="w-24 h-1.5 bg-brand-500 mx-auto rounded"></div>
+                <p class="text-stone-500 mt-6 text-lg md:text-xl font-medium">從看見問題，到設計解方</p>
+            </div>
+            <div class="relative w-full max-w-6xl mx-auto">
+                <div class="hidden md:block absolute top-4 bottom-4 left-1/2 transform -translate-x-1/2 w-1.5 bg-brand-200 rounded-full"></div>
+                <div class="space-y-16 md:space-y-24">
+                    <div class="relative flex flex-col md:flex-row w-full items-stretch">
+                        <div class="hidden md:flex absolute top-8 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-brand-500 hover:bg-brand-700 transition duration-300 rounded-full border-4 border-white shadow-xl z-10 items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                        <div class="w-full md:w-1/2 md:pr-16 relative mb-16 md:mb-0 fade-in-up group text-left md:text-right">
+                            <div class="md:hidden absolute top-2 bottom-[-4rem] left-[23px] w-1.5 bg-brand-200 z-0"></div>
+                            <div class="md:hidden absolute left-[12px] top-1 w-7 h-7 bg-brand-500 rounded-full border-4 border-white shadow-md z-10"></div>
+                            <div class="pl-16 md:pl-0 relative z-10 h-full flex flex-col">
+                                <span class="text-brand-500 font-bold text-base md:text-lg mb-2 block">新創團隊專案</span>
+                                <h3 class="text-2xl md:text-3xl font-bold text-stone-800 mb-4">「出租爺奶」專案經理</h3>
+                                <div class="text-stone-600 bg-brand-50 p-8 md:p-10 rounded-3xl shadow-sm border border-brand-100 text-left flex-1 text-lg md:text-xl leading-relaxed">
+                                    參與討論團隊未來發展方向及專案規劃。專注於高齡者價值的再發現與世代互動的重新連結，從新創與商業模式設計的角度，深入接觸高齡社會與社會永續等議題。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-16 relative fade-in-up group text-left" style="transition-delay: 0.1s;">
+                            <div class="md:hidden absolute top-2 bottom-[-4rem] left-[23px] w-1.5 bg-brand-200 z-0"></div>
+                            <div class="md:hidden absolute left-[12px] top-1 w-7 h-7 bg-brand-500 rounded-full border-4 border-white shadow-md z-10"></div>
+                            <div class="pl-16 md:pl-0 relative z-10 h-full flex flex-col">
+                                <span class="text-brand-500 font-bold text-base md:text-lg mb-2 block">競賽與領導力</span>
+                                <h3 class="text-2xl md:text-3xl font-bold text-stone-800 mb-4">淡江大學新創社 宣傳長</h3>
+                                <div class="text-stone-600 bg-brand-50 p-8 md:p-10 rounded-3xl shadow-sm border border-brand-100 text-left flex-1 text-lg md:text-xl leading-relaxed">
+                                    與團隊共同規劃活動與提案，將抽象理念轉化為具體可行的企劃。帶領團隊參與競賽，成功入圍「教育部全國人文社會永續行動創新應用競賽」。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row w-full items-stretch">
+                        <div class="hidden md:flex absolute top-8 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-brand-500 hover:bg-brand-700 transition duration-300 rounded-full border-4 border-white shadow-xl z-10 items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                        <div class="w-full md:w-1/2 md:pr-16 relative mb-16 md:mb-0 fade-in-up group text-left md:text-right" style="transition-delay: 0.2s;">
+                            <div class="md:hidden absolute top-2 bottom-[-4rem] left-[23px] w-1.5 bg-brand-200 z-0"></div>
+                            <div class="md:hidden absolute left-[12px] top-1 w-7 h-7 bg-brand-500 rounded-full border-4 border-white shadow-md z-10"></div>
+                            <div class="pl-16 md:pl-0 relative z-10 h-full flex flex-col">
+                                <span class="text-brand-500 font-bold text-base md:text-lg mb-2 block">金融實務</span>
+                                <h3 class="text-2xl md:text-3xl font-bold text-stone-800 mb-4">台灣銀行 暑期實習</h3>
+                                <div class="text-stone-600 bg-brand-50 p-8 md:p-10 rounded-3xl shadow-sm border border-brand-100 text-left flex-1 text-lg md:text-xl leading-relaxed">
+                                    為期兩個月的實習經驗。將財務金融的學術知識應用於實際銀行業務中，了解大型金融機構的運作邏輯與實務挑戰。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-16 relative fade-in-up group text-left" style="transition-delay: 0.3s;">
+                            <div class="md:hidden absolute left-[12px] top-1 w-7 h-7 bg-brand-500 rounded-full border-4 border-white shadow-md z-10"></div>
+                            <div class="pl-16 md:pl-0 relative z-10 h-full flex flex-col">
+                                <span class="text-brand-500 font-bold text-base md:text-lg mb-2 block">社會參與及教育溝通</span>
+                                <h3 class="text-2xl md:text-3xl font-bold text-stone-800 mb-4">家扶基金會 青年發聲計畫</h3>
+                                <div class="text-stone-600 bg-brand-50 p-8 md:p-10 rounded-3xl shadow-sm border border-brand-100 text-left flex-1 text-lg md:text-xl leading-relaxed">
+                                    擔任「君天來呷ㄅㄥ」總召。帶領團隊設計結合遊戲與教育的互動攤位，推廣均衡飲食概念。從中累積議題觀察、活動設計與公眾溝通的實務能力，學習將社會關懷轉化為大眾參與的具體行動。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section id="project" class="py-24 bg-brand-900 text-white px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center fade-in-up mb-16">
+                <!-- 已放大標籤 -->
+                <div class="inline-block px-6 py-2 md:px-8 md:py-3 border-2 border-brand-300 text-brand-100 rounded-full text-lg md:text-xl font-bold tracking-wider mb-8 shadow-sm">青年百億海外圓夢計畫</div>
+                <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">I-1-31 永續領航：澳洲治理蹲點</h2>
+                <p class="text-lg md:text-xl text-brand-100 leading-relaxed max-w-3xl mx-auto text-left">這不僅是一次出國參訪，更是將我在碳費研究與治理領域的學術基礎，推向下一個階段的重要節點。我將深入觀察澳洲如何從「宣示永續」走向「實際達標」。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+                <div class="bg-brand-800/80 backdrop-blur border border-brand-700 p-8 lg:p-10 rounded-3xl fade-in-up shadow-xl text-left overflow-hidden">
+                    <h3 class="text-2xl lg:text-[1.35rem] xl:text-3xl font-bold mb-5 text-brand-50 whitespace-nowrap tracking-tight">學術與政策面觀察</h3>
+                    <p class="text-brand-100 leading-relaxed text-base lg:text-lg">透過拜訪西雪梨大學、UTS 等學術機構，了解澳洲在淨零目標、碳定價與 ESG 規範上的實務作法，作為台灣碳費研究的重要對照與補充。</p>
+                </div>
+                <div class="bg-brand-800/80 backdrop-blur border border-brand-700 p-8 lg:p-10 rounded-3xl fade-in-up shadow-xl text-left overflow-hidden" style="transition-delay: 0.1s;">
+                    <h3 class="text-2xl lg:text-[1.35rem] xl:text-3xl font-bold mb-5 text-brand-50 whitespace-nowrap tracking-tight">地方治理與生態實踐</h3>
+                    <p class="text-brand-100 leading-relaxed text-base lg:text-lg">參訪 Parramatta 市政廳、PHIVE 與相關生態與農業場域，觀察地方政府如何在城市發展與環境保育間取得平衡，讓永續治理從文件走向生活現場。</p>
+                </div>
+                <div class="bg-brand-800/80 backdrop-blur border border-brand-700 p-8 lg:p-10 rounded-3xl fade-in-up shadow-xl text-left overflow-hidden" style="transition-delay: 0.2s;">
+                    <h3 class="text-2xl lg:text-[1.35rem] xl:text-3xl font-bold mb-5 text-brand-50 whitespace-nowrap tracking-tight">科技轉譯與行動回饋</h3>
+                    <p class="text-brand-100 leading-relaxed text-base lg:text-lg">回國後結合澳洲觀察與碳費研究，運用網站與社群平台，以「白話圖文＋互動內容」方式解釋永續議題，並設計小型永續專案，將所學回饋校園與社會。</p>
+                </div>
+            </div>
+            
+            <div class="text-center fade-in-up" style="transition-delay: 0.3s;">
+                <a href="dream_project.pdf" download="蕭雯萱_完整圓夢計畫書.pdf" class="inline-block bg-white text-brand-900 px-12 py-5 rounded-full font-bold text-xl md:text-2xl hover:bg-brand-50 transition shadow-2xl transform hover:scale-105">下載完整圓夢計畫書 <i class="fas fa-file-pdf ml-3 text-2xl md:text-3xl"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-12 px-4 text-center">
+        <p class="text-left md:text-center">&copy; 2026 蕭雯萱 Wen-Hsuan Hsiao. I-1-31 永續領航:澳洲治理蹲點</p>
+    </footer>
+
+    <script>
+        // --- UI Interactions ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md', 'bg-white');
+                nav.classList.remove('shadow-sm', 'bg-white/90');
+            } else {
+                nav.classList.remove('shadow-md', 'bg-white');
+                nav.classList.add('shadow-sm', 'bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>
